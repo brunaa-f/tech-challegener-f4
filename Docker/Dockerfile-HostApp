@@ -1,0 +1,33 @@
+FROM node:20-alpine 
+
+# Define um argumento para o build
+ARG REMOTE_APP_HOST
+# Exporta o argumento como variável de ambiente
+ENV REMOTE_APP_HOST=${REMOTE_APP_HOST}
+
+WORKDIR /app
+
+# Copia os arquivos
+COPY ../package.json ../package-lock.json ./
+COPY ../apps/host-app ./apps/host-app/
+COPY ../libs ./libs/
+
+# Instala dependências
+RUN npm install
+
+# Gera o Prisma Client
+RUN npx prisma generate --schema=./libs/db/prisma/schema.prisma
+
+# Mude para o diretório do host-app
+WORKDIR /app/apps/host-app
+# Instala dependências
+RUN npm install
+
+# Constrói o app Next.js para produção
+RUN REMOTE_APP_HOST=${REMOTE_APP_HOST} npm run build
+
+# Expõe a porta da aplicação
+EXPOSE 3000
+
+# Comando para iniciar a aplicação
+CMD ["sh", "-c", "npx prisma migrate deploy --schema=../../libs/db/prisma/schema.prisma && npm run start"]

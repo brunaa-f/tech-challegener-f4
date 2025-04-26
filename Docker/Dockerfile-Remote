@@ -1,0 +1,25 @@
+FROM node:20-alpine AS build
+
+WORKDIR /app
+
+# Copia os arquivos
+COPY ../apps/remote-app/package.json ../apps/remote-app/package-lock.json ./
+
+RUN npm install
+
+COPY ../apps/remote-app .
+
+RUN npm run build
+
+# Etapa 2: Servir o build em produção
+FROM node:20-alpine AS serve
+
+WORKDIR /app
+
+COPY --from=build /app/apps/remote-app/dist .
+
+RUN npm install -g serve
+
+EXPOSE 3002
+
+CMD ["serve", "-s", "/app/apps/remote-app", "-p", "3002"]

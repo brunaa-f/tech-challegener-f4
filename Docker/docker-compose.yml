@@ -1,0 +1,52 @@
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data: {}
+
+services:
+  db:
+    build:
+      context: ../
+      dockerfile: ./Docker/Dockerfile-Postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ffase2-microfrontend
+      POSTGRES_DB: fiap-fase2-microfront
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fiap-fase2-microfront"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  host-app:
+    build:
+      context: ../
+      dockerfile: ./Docker/Dockerfile-HostApp
+      args:
+        REMOTE_APP_HOST: http://localhost:3002
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://postgres:ffase2-microfrontend@db:5432/fiap-fase2-microfront"
+    networks:
+      - app-network
+
+  remote-app:
+    build:
+      context: ../
+      dockerfile: ./Docker/Dockerfile-Remote
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network

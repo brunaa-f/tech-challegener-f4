@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Define a raiz do seu projeto como base para os caminhos
+    "paths": {
+      "@libs/db": ["libs/db"] // Define o caminho do seu alias
+    }
+  }
+}
