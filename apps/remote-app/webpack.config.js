@@ -35,7 +35,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         // expose each component
-        "./CardNovoInvestimento": "./src/components/CardNovoInvestimento",
+        "./CardNovoInvestimento": "./src/presentation/components/CardNovoInvestimento",
       },
       shared: {
         ...deps,
