@@ -77,13 +77,13 @@ cd libs/db
 Certifique-se de que as migrações e o cliente Prisma estejam configurados corretamente.
 
 ```bash
-npx prisma generate --schema=./libs/db/prisma/schema.prisma
+npx prisma generate --schema=./prisma/schema.prisma
 ```
 
 #### 3.2 Aplicar as migrações no banco de dados:
 
 ```bash
-npx prisma migrate dev --schema=./libs/db/prisma/schema.prisma
+npx prisma migrate dev --schema=./prisma/schema.prisma
 ```
 
 Se o banco de dados estiver configurado corretamente, as migrações serão aplicadas.
