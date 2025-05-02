@@ -13,12 +13,13 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@shared/*": ["./src/shared"],
+      "@shared/*": ["./src/shared/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@repositories/*": ["./src/repositories/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["./src/infra/services/*"],
       "@libs/db": ["../../libs/db"]
     },
+    "baseUrl": ".", 
     "allowJs": true,
     "skipLibCheck": true,
     "incremental": true

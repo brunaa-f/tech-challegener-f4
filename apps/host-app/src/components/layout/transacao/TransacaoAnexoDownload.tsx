@@ -1,7 +1,7 @@
 "use client";
 
 import IconButton from "@/components/ui/IconButton";
-import { DownloadAnexo, DeleteAnexo } from "@/services/transacoesAnexoService";
+import { DownloadAnexo, DeleteAnexo } from "@/infra/services/transacoesAnexoService";
 import { TransacaoAnexoDownloadOptions } from "@/shared/models/Transacao";
 
 export default function TransacaoAnexoDownload(options: TransacaoAnexoDownloadOptions) {

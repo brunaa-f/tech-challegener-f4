@@ -6,7 +6,7 @@ import {
   postSaldo,
   postTransacao,
   putTransacoes,
-} from '../../services/transacoesServices';
+} from '../../infra/services/transacoesServices';
 
 interface Transacao {
   userId: number;
