@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "@/store/index";
+import { RootState, AppDispatch } from "@/presentation/store/index";
 import {
   setTipoFiltroTransacao,
   setDataInicio,

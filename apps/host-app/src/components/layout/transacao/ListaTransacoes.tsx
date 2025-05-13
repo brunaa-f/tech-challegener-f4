@@ -5,7 +5,7 @@ import { Transacao , ListaTransacoesOptions } from "../../../shared/models/Trans
 import TransacaoConfirmDelete from "./TransacaoConfirmDelete";
 import TransacaoItem from "./TransacaoItem";
 import TransacaoEditModal from "./TransacaoEditModal";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { useDispatch } from "react-redux";
 import { deletarTransacao } from "@/features/transactions/transactionSlice";
 import { useSelector } from "react-redux";

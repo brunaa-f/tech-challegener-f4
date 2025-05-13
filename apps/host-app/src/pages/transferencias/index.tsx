@@ -2,7 +2,7 @@ import Aside from "@/components/layout/Aside";
 import LayoutLogado from "@/components/layout/LayoutLogado";
 import TransacoesPage from "@/components/layout/transacao/TransacoesPage";
 import { fetchDadosIniciais } from "@/features/transactions/transactionSlice";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

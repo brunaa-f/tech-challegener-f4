@@ -14,7 +14,7 @@ import { TipoTransacao } from "@/shared/types/TipoTransacao";
 import { DepositoCategorias, TransferenciaCategorias } from "@/shared/types/CategoriasPorTipoTransacao";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { useSelector } from "react-redux";
 import { atualizarTransacaoBanco } from "@/features/transactions/transactionSlice";
 

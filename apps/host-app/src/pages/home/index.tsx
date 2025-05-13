@@ -8,7 +8,7 @@ import LayoutLogado from "@/components/layout/LayoutLogado";
 import { useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { fetchDadosIniciais } from "@/features/transactions/transactionSlice";
 
 export default function Index() {

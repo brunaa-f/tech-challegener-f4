@@ -9,7 +9,7 @@ import {  FormularioPropsTransacao } from "@/shared/models/Formulario";
 import { InputSelectOption } from "@/shared/models/Input";
 import FileUploader, { FileUploaderRef } from "@/components/forms/FileUploader";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { useSelector } from "react-redux";
 import { novaTransacaoBanco, realizarDeposito } from "@/features/transactions/transactionSlice";
 

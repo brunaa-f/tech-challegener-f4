@@ -6,7 +6,7 @@ import Image from "next/image";
 import Icon from "@/components/ui/Icon";
 import { useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "@/store";
+import { AppDispatch } from "@/presentation/store";
 import { useEffect } from "react";
 import { atualizarSaldo } from "@/features/transactions/transactionSlice";
 
