@@ -1,4 +1,4 @@
-import TransacoesRepository from "@/repositories/TransacoesRepository";
+import TransacoesRepository from "@/core/repositories/TransacoesRepository";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const transacoesRepository = new TransacoesRepository();

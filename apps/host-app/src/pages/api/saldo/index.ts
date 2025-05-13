@@ -1,4 +1,4 @@
-import SaldoRepository from "@/repositories/SaldoRepository";
+import SaldoRepository from "@/core/repositories/SaldoRepository";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const saldoRepository = new SaldoRepository();

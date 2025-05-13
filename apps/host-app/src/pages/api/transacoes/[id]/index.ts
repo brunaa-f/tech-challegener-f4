@@ -1,4 +1,4 @@
-import TransacoesRepository from "@/repositories/TransacoesRepository";
+import TransacoesRepository from "@/core/repositories/TransacoesRepository";
 import { TipoTransacao } from "@/shared/types/TipoTransacao";
 import { createReadStream, ReadStream } from "fs";
 import { NextApiRequest, NextApiResponse } from "next";

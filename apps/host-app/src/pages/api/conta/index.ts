@@ -1,4 +1,4 @@
-import ContaRepository from "@/repositories/ContaRepository";
+import ContaRepository from "@/core/repositories/ContaRepository";
 import validaEmail from "@/shared/utils/validaEmail";
 import { NextApiRequest, NextApiResponse } from "next";
 

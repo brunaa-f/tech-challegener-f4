@@ -1,4 +1,4 @@
-import ContaRepository from "@/repositories/ContaRepository";
+import ContaRepository from "@/core/repositories/ContaRepository";
 import validaEmail from "@/shared/utils/validaEmail";
 import NextAuth, { AuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";

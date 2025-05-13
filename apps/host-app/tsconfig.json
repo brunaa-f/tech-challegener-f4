@@ -15,7 +15,7 @@
       "@components/*": ["./src/components/*"],
       "@shared/*": ["./src/shared/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@repositories/*": ["./src/repositories/*"],
+      "@repositories/*": ["src/core/repositories/*"],
       "@services/*": ["./src/infra/services/*"],
       "@libs/db": ["../../libs/db"]
     },
