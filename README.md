@@ -1,8 +1,6 @@
 # Projeto Microfrontend com Module Federation e Docker
 
-Aplicativo Host Next.js
-Aplicativo Remoto React
-Banco de Dados Postgres
+Este projeto implementa uma arquitetura de microfrontends utilizando Module Federation, com um aplicativo host desenvolvido em Next.js, um aplicativo remoto em React e um banco de dados PostgreSQL.
 
 ## Estrutura do Projeto
 
