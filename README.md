@@ -128,16 +128,8 @@ cd apps/remote-app
 
 #### Inicie o servidor
 
-- Desenvolvimento:
-
 ```bash
-npm run dev
-```
-
-- Produção:
-
-```bash
-npm run serve
+npm run start
 ```
 
 O servidor será iniciado e estará disponível em [http://localhost:3002](http://localhost:3002).
