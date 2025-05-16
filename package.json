@@ -10,11 +10,12 @@
     "docker:host-send-aws": "docker tag fiap-fase2-mf-host:latest 966073448937.dkr.ecr.us-east-1.amazonaws.com/fiap-fase2-mf-host:latest && docker push 966073448937.dkr.ecr.us-east-1.amazonaws.com/fiap-fase2-mf-host:latest"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "dotenv": "^16.4.7",
     "npx": "^10.2.2",
-    "prisma": "^6.8.1"
+    "prisma": "^6.8.2"
   },
   "dependencies": {
-    "@prisma/client": "^6.8.1"
+    "@prisma/client": "^6.8.2"
   }
 }
