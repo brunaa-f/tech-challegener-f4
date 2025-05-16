@@ -1,7 +1,7 @@
 # Projeto Microfrontend com Module Federation e Docker
 
 Aplicativo Host Next.js
-Aplicativo Remoto Angular
+Aplicativo Remoto React
 Banco de Dados Postgres
 
 ## Estrutura do Projeto
