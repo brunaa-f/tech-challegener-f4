@@ -2,6 +2,13 @@
 
 Este projeto implementa uma arquitetura de microfrontends utilizando Module Federation, com um aplicativo host desenvolvido em Next.js, um aplicativo remoto em React e um banco de dados PostgreSQL.
 
+## 🧰 Tecnologias
+- React + Module Federation (Microfrontends)
+- Zustand / Redux Toolkit
+- Prisma + Docker
+- Clean Architecture
+- SWR (cache)
+
 ## Estrutura do Projeto
 
 - **apps/host-app**: Contém o aplicativo host.
