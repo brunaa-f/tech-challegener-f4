@@ -1,5 +1,5 @@
 import ContaRepository from "@/core/repositories/ContaRepository";
-import validaEmail from "@/shared/utils/validaEmail";
+import validaEmail from "@/core/utils/validaEmail";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export interface NovaContaDTO {

@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 import Input from "../../components/forms/Input";
-import validaEmail from "../../shared/utils/validaEmail";
+import validaEmail from "../../core/utils/validaEmail";
 import Button from "../../components/ui/Button";
 import Image from "next/image";
 

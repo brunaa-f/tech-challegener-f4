@@ -2,7 +2,7 @@
 
 import IconButton from "@/components/ui/IconButton";
 import { FormatoData } from "@/shared/types/FormatoData";
-import { formatarData, formatarMoeda } from "@/shared/utils/Formatters";
+import { formatarData, formatarMoeda } from "@/core/utils/Formatters";
 import { TransacaoItemOptions } from "@/shared/models/Transacao";
 import TransacaoAnexoDownload from "./TransacaoAnexoDownload";
 import { TipoTransacao } from "@/shared/types/TipoTransacao";

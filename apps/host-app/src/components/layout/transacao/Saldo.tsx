@@ -1,6 +1,6 @@
 "use client";
 
-import { formatarData, formatarMoeda } from "@/shared/utils/Formatters";
+import { formatarData, formatarMoeda } from "@/core/utils/Formatters";
 import { FormatoData } from "@/shared/types/FormatoData";
 import Image from "next/image";
 import Icon from "@/components/ui/Icon";
