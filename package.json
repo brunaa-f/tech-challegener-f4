@@ -12,9 +12,9 @@
   "devDependencies": {
     "dotenv": "^16.4.7",
     "npx": "^10.2.2",
-    "prisma": "^6.1.0"
+    "prisma": "^6.8.1"
   },
   "dependencies": {
-    "@prisma/client": "^6.7.0"
+    "@prisma/client": "^6.8.1"
   }
 }
