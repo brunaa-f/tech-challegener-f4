@@ -4,10 +4,9 @@ Este projeto implementa uma arquitetura de microfrontends utilizando Module Fede
 
 ## Tecnologias
 - React + Module Federation (Microfrontends)
-- Zustand / Redux Toolkit
+- NextAuth (autenticação) 
 - Prisma + Docker
 - Clean Architecture
-- SWR (cache)
 
 ## Estrutura do Projeto
 
@@ -15,31 +14,6 @@ Este projeto implementa uma arquitetura de microfrontends utilizando Module Fede
 - **apps/remote-app**: Contém o aplicativo remoto para os investimentos.
 - **libs/db**: Contém os esquemas e a configuração do Prisma.
 - **Docker**: Contém os arquivos de configuração do Docker Compose.
-
----
-
-### Comandos úteis
-
-- Criar migration
-
-```bash
-npx prisma migrate dev --name <migration_name> --schema=./libs/db/prisma/schema.prisma
-```
-
-## Inicialização para apenas rodar o projeto
-
-### 1. Iniciar Containers
-
-Certifique-se de que o Docker esteja instalado e em execução no seu sistema.
-Execute o comando abaixo para iniciar todos os serviços definidos em `./Docker/docker-compose.yml`.
-
-```bash
-npm run up-all
-```
-
-### 2. Acessar aplicação host
-
-Acesse a aplicação host na url em [http://localhost:3000](http://localhost:3000).
 
 ---
 
