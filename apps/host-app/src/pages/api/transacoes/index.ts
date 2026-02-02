@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       const file = Array.isArray(files.anexo) ? files.anexo[0] : files.anexo;
-      let anexoBytes: Uint8Array<ArrayBufferLike> | null = null;
+      let anexoBytes: Uint8Array | null = null;
 
       if (file) {
         try {

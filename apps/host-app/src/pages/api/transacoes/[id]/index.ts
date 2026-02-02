@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(400).json({ message: "Data inválida." });
         }
 
-        let anexoBytes: Uint8Array<ArrayBufferLike> | null = null;
+        let anexoBytes: Uint8Array | null = null;
 
         if (file) {
           try {

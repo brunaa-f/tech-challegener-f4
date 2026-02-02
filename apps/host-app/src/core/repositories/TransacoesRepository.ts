@@ -32,7 +32,7 @@ export default class TransacoesRepository {
     tipoTransacao: TipoTransacao,
     valor: number,
     date: Date,
-    anexo: Uint8Array<ArrayBufferLike> | null,
+    anexo: Uint8Array | null,
     anexoName: string | null,
     categoria: string
   ) {
@@ -69,7 +69,7 @@ export default class TransacoesRepository {
     tipoTransacao: string,
     valor: number,
     date: Date,
-    anexo: Uint8Array<ArrayBufferLike> | null,
+    anexo: Uint8Array | null,
     anexoName: string | null,
     categoria: string
   ) {
