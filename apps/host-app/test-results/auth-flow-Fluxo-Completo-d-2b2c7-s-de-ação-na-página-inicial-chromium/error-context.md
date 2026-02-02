@@ -1,0 +1,69 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - main [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e8]
+        - generic [ref=e9]:
+          - link "Sobre" [ref=e10] [cursor=pointer]:
+            - /url: /sobre
+          - link "Serviços" [ref=e11] [cursor=pointer]:
+            - /url: /servicos
+      - generic [ref=e12]:
+        - button "Abrir minha conta" [ref=e13] [cursor=pointer]
+        - button "Já tenho conta" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e17]:
+        - heading "Experimente mais liberdade no controle da sua vida financeira. Crie sua conta com a gente!" [level=1] [ref=e19]:
+          - text: Experimente mais liberdade no
+          - text: controle da sua vida financeira.
+          - text: Crie sua conta com a gente!
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - img "Conta e cartão gratuitos" [ref=e22]
+            - heading "Conta e cartão gratuitos" [level=2] [ref=e23]
+            - paragraph [ref=e24]: "Isso mesmo, nossa conta é digital, sem custo fixo e mais que isso: sem tarifa de manutenção."
+          - generic [ref=e25]:
+            - img "Saques sem custo" [ref=e26]
+            - heading "Saques sem custo" [level=2] [ref=e27]
+            - paragraph [ref=e28]: Você pode sacar gratuitamente 4x por mês de qualquer Banco 24h.
+          - generic [ref=e29]:
+            - img "Programa de pontos" [ref=e30]
+            - heading "Programa de pontos" [level=2] [ref=e31]
+            - paragraph [ref=e32]: Você pode acumular pontos com suas compras no crédito sem pagar mensalidade!
+          - generic [ref=e33]:
+            - img "Seguro Dispositivos" [ref=e34]
+            - heading "Seguro Dispositivos" [level=2] [ref=e35]
+            - paragraph [ref=e36]: Seus dispositivos móveis (computador e laptop) protegidos por uma mensalidade simbólica.
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - heading "Serviços" [level=3] [ref=e40]
+          - list [ref=e41]:
+            - listitem [ref=e42]: Conta corrente
+            - listitem [ref=e43]: Conta PJ
+            - listitem [ref=e44]: Cartão de crédito
+        - generic [ref=e45]:
+          - heading "Contato" [level=3] [ref=e46]
+          - list [ref=e47]:
+            - listitem [ref=e48]: 0800 004 250 08
+            - listitem [ref=e49]: meajuda@bytebank.com.br
+            - listitem [ref=e50]: ouvidoria@bytebank.com.br
+        - generic [ref=e51]:
+          - paragraph [ref=e52]: Desenvolvido por Alura
+          - img "Bytebank" [ref=e53]
+          - generic [ref=e54]:
+            - link "Instagram" [ref=e55] [cursor=pointer]:
+              - /url: "#"
+              - img "Instagram" [ref=e56]
+            - link "WhatsApp" [ref=e57] [cursor=pointer]:
+              - /url: "#"
+              - img "WhatsApp" [ref=e58]
+            - link "YouTube" [ref=e59] [cursor=pointer]:
+              - /url: "#"
+              - img "YouTube" [ref=e60]
+  - alert [ref=e61]
+```

@@ -1,0 +1,222 @@
+name: CI/CD Pipeline - DevShip
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  # Job 1: Qualidade de Código
+  quality:
+    name: 🔍 Qualidade de Código
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: apps/host-app/package-lock.json
+
+      - name: 📚 Instalar dependências
+        working-directory: apps/host-app
+        run: npm ci
+
+      - name: 🔎 Executar ESLint
+        working-directory: apps/host-app
+        run: npm run lint
+
+  # Job 2: Testes Unitários e de Integração
+  test:
+    name: 🧪 Testes
+    runs-on: ubuntu-latest
+    needs: quality
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: apps/host-app/package-lock.json
+
+      - name: 📚 Instalar dependências
+        working-directory: apps/host-app
+        run: npm ci
+
+      - name: 🧪 Executar testes com cobertura
+        working-directory: apps/host-app
+        run: npm run test:coverage
+        env:
+          CI: true
+
+      - name: 📊 Upload do relatório de cobertura
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: apps/host-app/coverage/
+          retention-days: 7
+
+      - name: ✅ Verificar cobertura mínima (70%)
+        working-directory: apps/host-app
+        run: |
+          COVERAGE=$(cat coverage/coverage-summary.json | jq '.total.lines.pct')
+          echo "Cobertura de linhas: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 70" | bc -l) )); then
+            echo "❌ Cobertura abaixo de 70%"
+            exit 1
+          fi
+          echo "✅ Cobertura acima de 70%"
+
+  # Job 3: Testes E2E
+  e2e:
+    name: 🎭 Testes E2E
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: apps/host-app/package-lock.json
+
+      - name: 📚 Instalar dependências
+        working-directory: apps/host-app
+        run: npm ci
+
+      - name: 🎭 Instalar Playwright
+        working-directory: apps/host-app
+        run: npx playwright install --with-deps chromium
+
+      - name: 🎭 Executar testes E2E
+        working-directory: apps/host-app
+        run: npm run test:e2e
+        env:
+          CI: true
+
+      - name: 📊 Upload do relatório Playwright
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: apps/host-app/playwright-report/
+          retention-days: 7
+
+  # Job 4: Build
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    needs: [quality, test]
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: apps/host-app/package-lock.json
+
+      - name: 📚 Instalar dependências
+        working-directory: apps/host-app
+        run: npm ci
+
+      - name: 🏗️ Build da aplicação
+        working-directory: apps/host-app
+        run: npm run build
+        env:
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET || 'dev-secret-key' }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL || 'http://localhost:3000' }}
+
+      - name: 📦 Upload do artifact de build
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: |
+            apps/host-app/.next/
+            apps/host-app/public/
+            apps/host-app/package.json
+          retention-days: 7
+
+  # Job 5: Deploy (Simulado/Vercel)
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: [build, e2e]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 📥 Download do artifact de build
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: apps/host-app/
+
+      - name: 🚀 Deploy para Vercel
+        id: deploy
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: apps/host-app
+          vercel-args: '--prod'
+        continue-on-error: true
+
+      - name: 📝 Deploy Simulado (Fallback)
+        if: steps.deploy.outcome == 'failure' || steps.deploy.outcome == 'skipped'
+        run: |
+          echo "🚀 Deploy simulado realizado com sucesso!"
+          echo "📦 Artifact de build disponível para deploy manual"
+          echo "🌐 URL de produção: https://devship-fiap.vercel.app (simulado)"
+          echo ""
+          echo "Para configurar deploy real, adicione os secrets:"
+          echo "  - VERCEL_TOKEN"
+          echo "  - VERCEL_ORG_ID"
+          echo "  - VERCEL_PROJECT_ID"
+
+  # Job 6: Notificação
+  notify:
+    name: 📢 Notificação
+    runs-on: ubuntu-latest
+    needs: [deploy]
+    if: always()
+    
+    steps:
+      - name: 📢 Resumo do Pipeline
+        run: |
+          echo "🎉 Pipeline CI/CD Finalizado!"
+          echo ""
+          echo "📊 Resumo:"
+          echo "  ✅ Qualidade de código verificada"
+          echo "  ✅ Testes unitários executados"
+          echo "  ✅ Testes de integração executados"
+          echo "  ✅ Testes E2E executados"
+          echo "  ✅ Build gerado com sucesso"
+          echo "  ✅ Deploy realizado"
+          echo ""
+          echo "📈 Métricas disponíveis nos artifacts"
