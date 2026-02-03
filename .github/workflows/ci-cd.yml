@@ -142,7 +142,10 @@ jobs:
           cache: 'npm'
           cache-dependency-path: apps/host-app/package-lock.json
 
-      - name: 📚 Instalar dependências
+      - name: 📚 Instalar dependências root
+        run: npm ci
+
+      - name: 📚 Instalar dependências host-app
         working-directory: apps/host-app
         run: npm ci
 
