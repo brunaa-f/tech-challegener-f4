@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { useState } from 'react';
 
 // Mock dos componentes individuais para testar integração
 import Button from '@/components/ui/Button';
@@ -139,10 +140,8 @@ describe('Testes de Integração - Dashboard Components', () => {
 
   describe('Teste de Estados Múltiplos', () => {
     it('deve alternar estados de botões corretamente', () => {
-      const React = require('react');
-
       const MultiStateComponent = () => {
-        const [activeButton, setActiveButton] = React.useState<string>('home');
+        const [activeButton, setActiveButton] = useState<string>('home');
 
         return (
           <div>

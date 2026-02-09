@@ -16,6 +16,7 @@ const customJestConfig = {
     '<rootDir>/node_modules/',
     '<rootDir>/.next/',
     '<rootDir>/e2e/',
+     '/\.d\.ts$/',
   ],
   collectCoverageFrom: [
     'src/components/ui/**/*.{ts,tsx}',
