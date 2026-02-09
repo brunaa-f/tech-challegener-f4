@@ -281,16 +281,3 @@ v1.0.0
   └────── Major: Breaking changes
 ```
 
----
-
-## 👩‍💻 Autora
-
-**Bruna Fernandes**
-- GitHub: [@brunaa-f](https://github.com/brunaa-f)
-- FIAP - Fase 5 - Prova Substitutiva
-
----
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT.
