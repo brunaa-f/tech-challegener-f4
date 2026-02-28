@@ -3,7 +3,7 @@
 [![CI/CD Pipeline](https://github.com/brunaa-f/dev-ship-safe-release/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/brunaa-f/dev-ship-safe-release/actions/workflows/ci-cd.yml)
 [![Coverage](https://img.shields.io/badge/coverage-70%25+-brightgreen)](./apps/host-app/coverage)
 
-> Projeto desenvolvido para a **Prova Substitutiva - Fase 5 FIAP** demonstrando domínio em testes, CI/CD e deploy automatizado.
+> Projeto desenvolvido a Fase 5 FIAP** demonstrando domínio em testes, CI/CD e deploy automatizado.
 
 ---
 
